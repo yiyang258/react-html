@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- react的框架源码, -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- js文件中可以使用jsx语法构建 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 构建页面元素的js文件 -->
+    <!-- <script src="./react-dom.js" type="text/babel"></script> -->
+    <title>react网页版</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // react16的语法
+        // ReactDOM.render(<h2>HELLO WORLD</h2>,document.querySelector("#root"))
+        class App extends React.Component {
+            // 组件数据
+            constructor() {
+                super();
+                this.state = {
+                    message:'hello world'
+                }
+                this.change = this.change.bind(this)
+            }
+            
+            // 组件的方法(实例方法)
+            change(){
+                this.setState({ message:'hello react'  });
+
+            }
+
+            // 渲染数据
+            render() {
+                return (
+                    <div>
+                        <h1>{ this.state.message }</h1>
+                        <button onClick={ this.change }>修改文本</button>
+                    </div>
+                );
+            }
+        }
+        // react18的语法
+        const root = ReactDOM.createRoot(document.querySelector("#root"));
+        root.render(<App/>)
+    </script>
+
+</body>
+
+</html>
