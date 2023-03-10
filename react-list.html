@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- react的框架源码, -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- js文件中可以使用jsx语法构建 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 构建页面元素的js文件 -->
+    <!-- <script src="./react-dom.js" type="text/babel"></script> -->
+    <title>列表</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // react16的语法
+        // ReactDOM.render(<h2>HELLO WORLD</h2>,document.querySelector("#root"))
+        class App extends React.Component {
+            // 组件数据
+            constructor() {
+                super();
+                this.state = {
+                    movie: [
+                        '上上课时', '实时监控上课0', '试试看就开始0', '数据库是框架', '就上课上课'
+                    ]
+                }
+            }
+
+
+            // 渲染数据
+            render() {
+                // 存放一个jsx组成的数组
+                // 方法一
+                // const movielist = [];
+                // for (let i = 0; i < this.state.movie.length; i++) {
+                //     const movie = this.state.movie[i];
+                //     const movieli = <li>{movie}</li>
+                //     movielist.push(movieli)
+                // }
+                // 方法二 : 使用map 构造出jsx的数组
+                const movielist = this.state.movie.map(item => {
+                    return <li>{item}</li>
+                })
+                return (
+                    <div>
+                        <h2>电影列表</h2>
+                        <ul>
+                            { this.state.movie.map(item => { return <li>{item}</li> } ) }
+                        </ul>
+                    </div>
+                );
+            }
+        }
+        // react18的语法
+        const root = ReactDOM.createRoot(document.querySelector("#root"));
+        root.render(<App />)
+    </script>
+
+</body>
+
+</html>
