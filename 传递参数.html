@@ -1,0 +1,62 @@
+<!--
+ * @Author: yiyang yy2418202054@163.com
+ * @Date: 2023-03-13 14:57:51
+ * @LastEditors: yiyang yy2418202054@163.com
+ * @LastEditTime: 2023-03-13 15:01:42
+ * @FilePath: \react项目\传递参数.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- react的框架源码, -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- js文件中可以使用jsx语法构建 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- 构建页面元素的js文件 -->
+    <!-- <script src="./react-dom.js" type="text/babel"></script> -->
+    <title>生成代码片段</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        // react16的语法
+        // ReactDOM.render(<h2>HELLO WORLD</h2>,document.querySelector("#root"))
+        class App extends React.Component {
+            // 组件数据
+            constructor() {
+                super();
+                this.state = {
+                    message: 'hello world',
+                }
+            }
+            btnclick(event, name, age) {
+                console.log('event', event);
+                console.log('name', name);
+                console.log('age', age);
+            }
+
+            // 渲染数据
+            render() {
+                const { message } = this.state;
+                return (
+                    <div>
+                        <h2>当前的数字 : {message}</h2>
+                        <button onClick={(event) => this.btnclick(event, '测试', 25)}>测试按钮</button>
+                    </div>
+                );
+            }
+        }
+        // react18的语法
+        const root = ReactDOM.createRoot(document.querySelector("#root"));
+        root.render(<App />)
+    </script>
+</body>
+
+</html>
